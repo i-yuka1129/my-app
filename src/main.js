@@ -8,6 +8,8 @@ import router from './router'
 Vue.config.productionTip = false
 
 console.log(store.state.count)
+store.commit('increment')
+console.log(store.state.count)
 
 /* eslint-disable no-new */
 new Vue({
