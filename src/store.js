@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    count: 0
+    count: 0,
+    message: 'メッセージ'
   },
   mutations: {
     increment(state) {
@@ -14,3 +15,4 @@ const store = new Vuex.Store({
   }
 })
 export default store
+console.log(store.state.message)
