@@ -9,3 +9,4 @@
   - ステート（state）
   - ゲッター（getter）
   - ミューテーション（mutations）
+  - アクション（actions）

@@ -39,6 +39,11 @@ const store = new Vuex.Store({
     mutationType(state, payload) {
       state.count = payload
     }
+  },
+  actions: {
+    actionType({ commit }, payload) {
+      commit('mutationType')
+    }
   }
 })
 
