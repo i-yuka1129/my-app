@@ -15,3 +15,28 @@
   - アクション（actions）
 - コンポーネントでストアを使用しよう
   - メッセージの状態を管理するストア
+  - メッセージを使用する
+  - メッセージを更新する
+``` bash
+# EditFormコンポーネントが反映されなかった原因と解決法
+
+// before main.js
+new Vue({
+  el: '#app',
+  router,
+  components: { App },
+  template: '<App/>'
+})
+
+// after main.js
+new Vue({
+  el: '#app',
+  store,
+  router,
+  components: { App },
+  template: '<App/>'
+})
+
+# importしたstore.jsが反映されていなかった
+# importのみでは使用できないため、Vue内で読み込む必要がある
+``` 

@@ -18,8 +18,7 @@ const store = new Vuex.Store({
       state.message = payload.message
     }
   },
-  actions: {
-    // メッセージの更新処理
+  actions: { // メッセージの更新処理
     doUpdate({
       commit
     }, message) {
@@ -29,5 +28,4 @@ const store = new Vuex.Store({
     }
   }
 })
-
 export default store

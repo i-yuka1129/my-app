@@ -1,33 +1,22 @@
 <template>
   <div class="app">
-    <h3>引数なし</h3>
-    <ol>
-      <li>{{ count }}</li>
-      <li>{{ max }}</li>
-    </ol>
-    <h3>引数付き</h3>
-    <ol>
-      <li>{{ itemA }}</li>
-      <li>{{ itemB(1) }}</li>
-      <li>{{ nameA }}</li>
-      <li>{{ nameB(1) }}</li>
-    </ol>
+    <h1>{{ message }}</h1>
+    <EditForm/>
   </div>
 </template>
-
 <script>
-import store from './store.js'
+// 子コンポーネントを読み込む
+import EditForm from '././components/EditForm.vue'
 export default {
+  name: 'app',
+  components: {
+    EditForm
+  },
   computed: {
-    // 引数なしゲッター
-    count() { return store.getters.count },   // 1
-    max()   { return store.getters.max },     // 2
-    // 引数付きゲッター
-    itemA() { return store.getters.item(1) }, // 1 👍 いいね
-    itemB() { return store.getters.item },    // 2 👎 よくないね
-    nameA() { return store.getters.name(1) }, // 3 👍 いいね
-    nameB() { return store.getters.name },    // 4 👎 よくないね
+    // ローカルの message とストアの message を同期
+    message() {
+      return this.$store.getters.message
+    }
   }
 }
-
 </script>
