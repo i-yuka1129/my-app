@@ -34,6 +34,11 @@ const store = new Vuex.Store({
     name(state, getters) {
       return id => getters.item(id).name
     }
+  },
+  mutations: {
+    mutationType(state, payload) {
+      state.count = payload
+    }
   }
 })
 

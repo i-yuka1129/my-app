@@ -29,4 +29,5 @@ export default {
     nameB() { return store.getters.name },    // 4 👎 よくないね
   }
 }
+
 </script>
