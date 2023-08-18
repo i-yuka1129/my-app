@@ -7,8 +7,6 @@ import router from './router'
 
 Vue.config.productionTip = false
 
-store.commit('moduleA/moduleC/update')
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
