@@ -30,14 +30,14 @@ const store = new Vuex.Store({
   }
 })
 
-const unwatch = store.watch(
-  (state, getters) => {
-    return state.count
-  },
-  (newVal, oldVal) => {
-    // 処理
-  }
-)
+if (module.hot) {
+  module.hot.accept(['./store/myModule.js']).default
+  store.hotUpdate({
+    modules: {
+      myModule: myModule
+    }
+  })
+}
 
 export default store
 store.dispatch('moduleA/load', './a.json')
