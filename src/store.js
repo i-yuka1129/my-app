@@ -30,6 +30,15 @@ const store = new Vuex.Store({
   }
 })
 
+const unwatch = store.watch(
+  (state, getters) => {
+    return state.count
+  },
+  (newVal, oldVal) => {
+    // 処理
+  }
+)
+
 export default store
 store.dispatch('moduleA/load', './a.json')
 store.dispatch('moduleB/load', './b.json')
