@@ -7,12 +7,7 @@ import router from './router'
 
 Vue.config.productionTip = false
 
-store.commit('moduleA/update')
-console.log(store.state.moduleA.count)
-console.log(store.state.moduleB.count)
-store.commit('moduleB/update')
-console.log(store.state.moduleA.count)
-console.log(store.state.moduleB.count)
+store.commit('moduleA/moduleC/update')
 
 /* eslint-disable no-new */
 new Vue({

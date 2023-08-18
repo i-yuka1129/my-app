@@ -11,6 +11,9 @@ const moduleA = {
     update(state) {
       state.count += 100
     }
+  },
+  modules: {
+    moduleC
   }
 }
 
