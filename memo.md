@@ -55,3 +55,4 @@ new Vue({
 
 ## 8/21(月)
 - VueRouterとは
+- シンプルなSPA構造
