@@ -1,22 +1,36 @@
 <template>
   <div class="app">
-    <h1>{{ message }}</h1>
-    <EditForm/>
+    <nav>
+      <router-link to="/">Home</router-link>
+      <router-link to="/product">商品情報</router-link>
+    </nav>
+     <!-- ここにパスと一致したコンポーネントが埋め込まれる -->
+     <router-view />
   </div>
 </template>
+
 <script>
-// 子コンポーネントを読み込む
-import EditForm from '././components/EditForm.vue'
 export default {
   name: 'app',
-  components: {
-    EditForm
-  },
-  computed: {
-    // ローカルの message とストアの message を同期
-    message() {
-      return this.$store.getters.message
-    }
-  }
-}
+};
 </script>
+
+<style>
+/* ナビゲーション */
+nav {
+    display: flex;
+    align-items: center;
+    background: #222;
+}
+nav a {
+    display: block;
+    padding: 0.5em;
+    color: #eee;
+    line-height: 1em;
+    text-decoration: none;
+}
+/* アクティブなリンク */
+.router-link-active {
+    background: palevioletred;
+}
+</style>
