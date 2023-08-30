@@ -19,7 +19,10 @@ const router = new VueRouter({
     },
     {
       path: '/product/:id', // 「:id」がパラメータ 何が入ってもOK
-      component: Product
+      component: Product,
+      props: route => ({
+        id: Number(route.params.id)
+      })
     }
   ]
 })
