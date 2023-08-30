@@ -1,23 +1,24 @@
 import Vue from 'vue'
-// import Router from 'vue-router'
 import VueRouter from 'vue-router'
-// ルート用のコンポーネントを読み込む
 import Home from '@/views/Home'
+import ProductList from '@/views/ProductList'
 import Product from '@/views/Product'
-// Vuexと同様で最初にプラグインとして登録
 Vue.use(VueRouter)
 
 // VueRouterインスタンスを生成する
 const router = new VueRouter({
   mode: 'history',
-  // URLのパスと紐づくコンポーネントをマッピング
   routes: [
     {
       path: '/',
       component: Home
     },
     {
-      path: '/product',
+      path: '/product', // IDが付いていないときはリストを表示
+      component: ProductList
+    },
+    {
+      path: '/product/:id', // 「:id」がパラメータ 何が入ってもOK
       component: Product
     }
   ]
