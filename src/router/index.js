@@ -1,8 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import Home from '@/views/Home'
-import ProductList from '@/views/ProductList'
-import Product from '@/views/Product'
+import ProductList from '@/views/ProductList' // 商品一覧
+import Product from '@/views/Product' // 商品情報
+// Productの子ルートたち
+import ProductHome from '@/views/Product/Home'
+import ProductReview from '@/views/Product/Review'
+import ProductReviewDetail from '@/views/Product/ReviewDetail'
+
 Vue.use(VueRouter)
 
 // VueRouterインスタンスを生成する
@@ -13,16 +19,35 @@ const router = new VueRouter({
       path: '/',
       component: Home
     },
+    // 商品一覧ページ
     {
-      path: '/product', // IDが付いていないときはリストを表示
+      path: '/product',
       component: ProductList
     },
+    // 商品情報ページ
     {
-      path: '/product/:id', // 「:id」がパラメータ 何が入ってもOK
+      path: '/product/:id',
       component: Product,
       props: route => ({
         id: Number(route.params.id)
-      })
+      }),
+      children: [
+        // 商品詳細（デフォルトルート）
+        {
+          name: 'product-home',
+          path: '',
+          component: ProductHome
+        },
+        // 商品のレビュー詳細
+        {
+          name: 'review-detail',
+          path: 'review/:rid', // 親ルートとかぶらないパラメータを指定
+          component: ProductReviewDetail,
+          props: route => ({
+            rid: Number(route.params.rid)
+          })
+        }
+      ]
     }
   ]
 })
