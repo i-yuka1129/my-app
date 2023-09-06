@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import product from './store/product.js'
 Vue.use(Vuex)
 
 const myModule = {
@@ -25,20 +26,8 @@ const myModule = {
 
 const store = new Vuex.Store({
   modules: {
-    moduleA: myModule,
-    moduleB: myModule
+    product
   }
 })
 
-if (module.hot) {
-  module.hot.accept(['./store/myModule.js']).default
-  store.hotUpdate({
-    modules: {
-      myModule: myModule
-    }
-  })
-}
-
 export default store
-store.dispatch('moduleA/load', './a.json')
-store.dispatch('moduleB/load', './b.json')
