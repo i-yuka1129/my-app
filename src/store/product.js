@@ -1,4 +1,4 @@
-import products from "@/api/products.js";
+import products from '@/api/products.js'
 // 商品詳細用のVuexモジュール
 export default {
   namespaced: true,
@@ -6,6 +6,9 @@ export default {
     detail: {}
   },
   getters: {
+    detail: state => state.detail
+  },
+  mutations: {
     set(state, { detail }) {
       state.detail = detail
     },

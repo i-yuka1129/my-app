@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 import Home from '@/views/Home'
 import ProductList from '@/views/ProductList' // 商品一覧
-import Product from '@/views/Product' // 商品情報
+import Product from '@/views/Product' // 商品情報（親ルート）
 // Productの子ルートたち
 import ProductHome from '@/views/Product/Home'
 import ProductReview from '@/views/Product/Review'
@@ -11,9 +11,7 @@ import ProductReviewDetail from '@/views/Product/ReviewDetail'
 
 Vue.use(VueRouter)
 
-// VueRouterインスタンスを生成する
 const router = new VueRouter({
-  mode: 'history',
   routes: [
     {
       path: '/',
@@ -22,7 +20,7 @@ const router = new VueRouter({
     // 商品一覧ページ
     {
       path: '/product',
-      component: ProductList
+      component: ProductList,
     },
     // 商品情報ページ
     {
@@ -38,6 +36,12 @@ const router = new VueRouter({
           path: '',
           component: ProductHome
         },
+        // 商品のレビュー一覧
+        {
+          name: 'product-review',
+          path: 'review',
+          component: ProductReview
+        },
         // 商品のレビュー詳細
         {
           name: 'review-detail',
@@ -51,5 +55,4 @@ const router = new VueRouter({
     }
   ]
 })
-
 export default router
