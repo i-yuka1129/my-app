@@ -8,8 +8,18 @@ import Product from '@/views/Product' // 商品情報（親ルート）
 import ProductHome from '@/views/Product/Home'
 import ProductReview from '@/views/Product/Review'
 import ProductReviewDetail from '@/views/Product/ReviewDetail'
+import store from '../store'
 
 Vue.use(VueRouter)
+
+// ルーターナビゲーションの前にフック
+router.beforeEach((to, from, next) => {
+  store.commit('view/start')
+})
+// ルーターナビゲーションの後にフック
+router.afterEach(() => {
+  store.commit('view/end')
+})
 
 const router = new VueRouter({
   routes: [
