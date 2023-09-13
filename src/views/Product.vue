@@ -6,7 +6,9 @@
       <router-link :to="{ name: 'product-review' }">レビュー</router-link>
     </nav>
     <!-- ここに子ルートを埋め込む -->
-    <router-view />
+    <transition name="view">
+      <router-view />
+    </transition>
   </div>
 </template>
 <script>
@@ -32,3 +34,15 @@
     }
   }
 </script>
+
+<style>
+.view-enter-active, .view-leave-active {
+  transition: opacuty 0.5s;
+}
+.view-leave-active {
+  position: absolute;
+}
+.view-enter, .view-leave-to {
+  opacity: 0;
+}
+</style>
