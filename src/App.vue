@@ -10,8 +10,29 @@
 </template>
 
 <script>
+import products from '@/api/product.js';
 export default {
   name: 'app',
+  data() {
+    return {
+      item: {}
+    }
+  },
+  // enter は this を使用できないため実装が異なる
+  beforeRoteEnter(to, from, next) {
+    products.asyncFind(Number(to.params.id), item => {
+      next(vm => {
+        vm.item = item
+      })
+    })
+  },beforeRouteUpdate(to, from, next) {
+    products.asyncFind(Number(to.params.id), item => {
+      this.item = item
+      next()
+    })
+  }
+}
+
 };
 </script>
 
