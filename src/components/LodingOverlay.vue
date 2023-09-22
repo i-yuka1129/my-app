@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <transition name="loading">
     <div class="loading" v-if="loading">Loding</div>
   </transition>
@@ -24,4 +24,4 @@
   .loading-leave-active {
     transition: all 0.5s ease 0.5s;
   }
-</style> -->
+</style>
