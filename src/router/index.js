@@ -17,6 +17,13 @@ const About = () => import('@/views/About')
 const router = new VueRouter({
   routes: [
     {
+      path: '/user',
+      component: User,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/about',
       component: About
     },
@@ -62,4 +69,25 @@ const router = new VueRouter({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  // 上位ルートを含めて認証が必要なルートがあるかを確認
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // 認証状態を確認
+    if (!auth.loggedIn()) {
+      // 認証していなければログインページにリダイレクト
+      next({
+        path: '/login',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next() // 認証の確認が必要ないルートならnext()で遷移
+  }
+})
+
 export default router
